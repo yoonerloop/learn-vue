@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>没有v-once属性：{{ n }}</h1>
+    <h1 v-once>v-once属性：{{ n }}</h1>
+    <button @click="n++">点我+1</button>
+</div>
+
+<script type="text/javascript">
+
+    new Vue({
+        el: '#root',
+        data: {
+            n: 1
+        },
+    });
+
+</script>
+</body>
+</html>

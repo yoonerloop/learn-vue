@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<!--
+需求1：定义一个v-big指令和v-text类似，会将数字放大10倍，使用对象合适
+需求2：定义一个v-fbind指令和v-bind类似，可以让输入框默认获取焦点，使用函数合适
+-->
+<div id="root">
+    <span>默认：{{ n }}</span>
+    <span v-big="n"></span>
+    <button @click="n++">点击+1</button>
+    <input type="text" v-fbind="fbind">
+</div>
+
+<script type="text/javascript">
+
+    new Vue({
+        el: '#root',
+        data: {
+            n: 1
+        },
+        // directives里面的function的this是window 
+        directives: {
+            // 回调时机：
+            // 1、指令和元素绑定时候（一上来就加载时候）
+            // 2、指令所用的数据发生更新的时候。
+            // 3、指令所在模板被重新解析时
+            big(element, binding) {
+                console.log('element', element)
+                console.log('binding', binding)
+                element.innerHTML = binding.value * 10
+            },
+            // 详细方法，上面的实简写
+            fbind: {
+                bind(element, binding) {
+                    //1、指令和元素绑定时候（一上来就加载时候）
+                    console.log('bind')
+                },
+                inserted(element, binding) {
+                    //指令所在元素被插入元素时候
+                    console.log('inserted')
+                },
+                update(element, binding) {
+                    console.log('update')
+                }
+            }
+        }
+    });
+
+    // 全局指令
+
+    // Vue.directives('fbind',{
+    //     bind(element, binding) {
+    //         //1、指令和元素绑定时候（一上来就加载时候）
+    //         console.log('bind')
+    //     },
+    //     inserted(element, binding) {
+    //         //指令所在元素被插入元素时候
+    //         console.log('inserted')
+    //     },
+    //     update(element, binding) {
+    //         console.log('update')
+    //     }
+    // })
+
+    Vue.big('big',function (element, binding) {
+
+    })
+</script>
+</body>
+</html>

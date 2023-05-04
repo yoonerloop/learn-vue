@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/javascript">
+
+    const student = {
+        template: `
+          <ul>
+          <li v-for="st in list">{{ st }}</li>
+          </ul>
+        `,
+        data() {
+            return {
+                list: [
+                    '张三', '李四', '王五'
+                ]
+            }
+        }
+    }
+
+    const school = {
+        template: `
+          <div>
+          <h1 ref="sch-title-h1">学校</h1>
+          <h1>{{ desc }}</h1>
+          <student/>
+          </div>
+        `,
+        components: {
+            student
+        },
+        data() {
+            return {
+                desc: '这是一个幼儿园学校'
+            }
+        }
+    }
+
+    const hello = {
+        template: `
+            <span>哈哈哈哈哈哈哈</span>
+        `,
+    }
+
+    const App = {
+        template: `
+          <div>
+          <school></school>
+          <hello ref="hello"></hello>
+          <button ref="btn" @click="btnRef">获取ref</button>
+          </div>
+        `,
+        components: {
+            school, hello
+        },
+        methods: {
+            btnRef() {
+                console.log('===获取ref===1',this.$refs.btn)
+                console.log('===获取ref===2',this.$refs.hello)
+            }
+        }
+    }
+
+    new Vue({
+        template: `
+          <app></app>
+        `,
+        el: '#root',
+        components: {
+            App
+        }
+    });
+
+</script>
+</body>
+</html>

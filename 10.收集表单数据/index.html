@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <form action="#" @submit.prevent="submit">
+        账号：<input type="text" v-model="account"><br><br>
+        密码：<input type="password" v-model="password"><br><br>
+        性别：男 <input type="radio" v-model="xingbie" value="nan">
+        女 <input type="radio" v-model="xingbie" value="nv">
+        <br><br>
+        爱好：
+        吃饭 <input type="checkbox" v-model="aihao" value="eat">
+        睡觉 <input type="checkbox" v-model="aihao" value="sleep">
+        打豆豆 <input type="checkbox" v-model="aihao" value="doudou"> <br><br>
+
+        年龄：<input type="number" v-model.number="age"><br><br>
+        所属校区：
+        <select v-model="xiaoqu">
+            <option value="">请选择字母</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+        </select>
+        <br><br>
+        其他信息：<textarea v-model.lazy.trim="qita"></textarea><br><br>
+        <input type="checkbox" v-model="xieyi"> 阅读接受协议
+        <a href="http:www.baidu.com">用户协议</a><br><br>
+        <button>提交</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    new Vue({
+        el: '#root',
+        data: {
+            account: '',
+            password: '',
+            xingbie: 'nan',
+            aihao: [],
+            age: '',
+            xiaoqu: '',
+            qita: '',
+            xieyi: '',
+        },
+        methods: {
+            submit() {
+                console.log(JSON.stringify(this._data))
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

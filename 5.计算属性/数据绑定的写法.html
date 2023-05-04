@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    姓：<input type="text" v-model:value="xing"><br>
+    名：<input type="text" v-model:value="ming"><br>
+    结果：{{ xing + '-' + ming }}
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        data: {
+            xing: '',
+            ming: ''
+        },
+    });
+
+</script>
+</body>
+</html>

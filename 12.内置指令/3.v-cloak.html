@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  // 如果该src加载时间太长了，会导致root里面的元素阻塞渲染，加上v-cloak可以自动提前加载静态data
+  <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  // 使用v-html，可以加载HTML字符串，类似于React的dangerouslySetInnerHTML
+  <h1 v-cloak>{{result}}</h1>
+</div>
+
+<script type="text/javascript">
+
+  new Vue({
+    el: '#root',
+    data: {
+      result: '打非法所得'
+    },
+  });
+
+</script>
+</body>
+</html>

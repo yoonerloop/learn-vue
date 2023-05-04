@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/javascript">
+
+    const student = Vue.extend({
+        template: `
+          <ul>
+          <li v-for="st in list">{{ st }}</li>
+          </ul>
+        `,
+        data() {
+            return {
+                list: [
+                    '张三', '李四', '王五'
+                ]
+            }
+        }
+    })
+
+    console.log('log', student)
+
+    new Vue({
+        template: `
+          <student></student>
+        `,
+        el: '#root',
+        components: {
+            student
+        }
+    });
+
+</script>
+</body>
+</html>

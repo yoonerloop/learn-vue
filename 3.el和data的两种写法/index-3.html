@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>{{ name }}</h1>
+</div>
+<script type="text/javascript">
+    const v = new Vue({
+        // el: 'root',
+        // 对象写法
+        // data: {name:'zhangsan'}
+        // 函数写法
+        data: function () {
+            // 此处的this是vue，不能写成箭头函数
+            return {name: 'zhangsan'}
+        }
+    })
+    v.$mount('#root')
+</script>
+</body>
+</html>

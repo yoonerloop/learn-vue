@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    姓：<input type="text" v-model="xing"><br>
+    名：<input type="text" v-model="ming"><br>
+    <!--    这些只执行一次-->
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        data: {
+            xing: '',
+            ming: ''
+        },
+        computed: {
+            fullName() {
+                return this.xing + '-' + this.ming;
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

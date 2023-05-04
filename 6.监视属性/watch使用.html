@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    天气{{ isHot ? '炎热' : '寒冷' }}
+    <button @click="weatcher">切换天气</button>
+</div>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            isHot: true
+        },
+        methods: {
+            weatcher() {
+                this.isHot = !this.isHot
+            }
+        },
+        watch: {
+            // 1、完整写法
+            // isHot: {
+            //     // 注意这必须是handle
+            //     handler(newData, oldData) {
+            //         console.log(newData, oldData)
+            //     },
+            //     // 初始化时候handler是否被加载
+            //     immediate: true
+            // }
+
+            // 2、简写
+            isHot(newData, oldData) {
+                console.log(newData, oldData)
+            }
+        }
+    })
+    // 3、其他方式监视
+    vm.$watch('isHot',function (newData, oldData) {
+        console.log(newData, oldData)
+    })
+</script>
+</body>
+</html>

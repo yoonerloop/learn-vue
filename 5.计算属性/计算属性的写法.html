@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    姓：<input type="text" v-model="xing"><br>
+    名：<input type="text" v-model="ming"><br>
+    <!--    这些只执行一次-->
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}<br>
+    结果：{{ fullName }}
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        data: {
+            xing: '',
+            ming: ''
+        },
+        computed: {
+            // 只读不修改可以简写，否则不能简写
+            fullName: {
+                // 当读取时候会被调用，返回值作为fullName的值
+                // get什么时候被调用？初次渲染时候调用，所依赖项发生变化的时候
+                get() {
+                    // 这里的this，vue已经调整成vm了，可以直接通过this调用data的属性
+                    console.log(this)
+                    return this.xing + '-' + this.ming;
+                },
+                set(value) {
+                    const v = value.split('-');
+                    this.xing = v[0];
+                    this.ming = v[1];
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

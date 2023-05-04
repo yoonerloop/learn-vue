@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>改变S{{ numbers.a }}</h1>
+    <h1>改变D{{ numbers.b }}</h1>
+    <button @click="numbers.a++">切换天气</button>
+    <button @click="numbers.b++">切换天气</button>
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        data: {
+            numbers: {
+                a: 1,
+                b: 5
+            }
+        },
+        watch: {
+            // 监视多级结构中的某个数据
+            // 'numbers.a': {
+            //     handler(newData, oldData) {
+            //         console.log(newData, oldData)
+            //     }
+            // }
+            // 监视多级属性中所有的变化
+            numbers: {
+                deep: true, //必须添加，否则监视不到
+                handler(newData, oldData) {
+                    console.log(newData, oldData)
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

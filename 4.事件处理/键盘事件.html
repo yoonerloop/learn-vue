@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../public/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--  .enter表示回车监听，如果不加的话需要通过keycode判断事件；还有keydown键  -->
+    <input placeholder="输入内容" @keyup.enter="event1"/>
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: "#root",
+        data: {},
+        methods: {
+            event1(e) {
+                // 可以使用@keyup.enter判断键盘事件
+                if (e.keyCode === 13) {
+                    console.log(e.target.value)
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
