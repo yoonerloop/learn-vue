@@ -19,4 +19,5 @@ export default {
 };
 </script>
 
+<!--scoped可以实现样式的隔离，避免代码执行的时候命名冲突-->
 <style scoped></style>

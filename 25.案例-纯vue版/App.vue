@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Count from "@/store/index";
+import Count from "@/components/Count.vue";
 
 export default {
   name: "App",
