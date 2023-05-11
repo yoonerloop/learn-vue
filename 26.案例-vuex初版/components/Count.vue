@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>当前的求和为：{{ mun }}</h2>
+    <h2>当前的求和为：{{ $store.state.mun }}</h2>
+    <!--这里可以使用计算属性，如果多个组件需要共享，则需要写成store里面配置-->
+    <h4>当前放大10倍后的数据：{{ $store.getters.bigSum }}</h4>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -18,26 +20,23 @@ export default {
   name: "Count",
   data() {
     return {
-      mun: 0,
       n: 1,
     };
   },
   methods: {
     add() {
-      this.mun += this.n;
+      this.$store.dispatch("jia", this.n);
     },
     reduce() {
-      this.mun -= this.n;
+      // this.$store.dispatch("jian", this.n);
+      //这里为简写，当store中的action没有实际的其他运算逻辑的时候，这里直接省略dispatch，使用commit
+      this.$store.commit("JIAN", this.n);
     },
     addJi() {
-      if (this.mun % 2) {
-        this.mun += this.n;
-      }
+      this.$store.dispatch("jiajishu", this.n);
     },
     addWait() {
-      setTimeout(() => {
-        this.mun += this.n;
-      }, 500);
+      setTimeout(() => {}, 500);
     },
   },
 };
